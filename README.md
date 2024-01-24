@@ -2,7 +2,7 @@
 
 ## Encãotrador
 
-# Instruções para Executar o Sistema
+### Instruções para Executar o Sistema
 
 1. **Pré-requisitos:**
    - Certifique-se de ter o Python instalado no seu computador.
@@ -23,7 +23,7 @@
 4. **Execução do Front End:**
    - Após o servidor estar sendo executado, basta abrir o index.html e realizar suas buscas.
 
-# Premissas Assumidas
+### Premissas Assumidas
 
 1. **Formato de Data:**
    - O formato de data esperado é "YYYY-MM-DD" (exemplo: "2023-05-15").
@@ -31,7 +31,7 @@
 2. **Exclusividade do projeto:**
    - Esse projeto foi desenvolvido pensando no problema apresentado do Eduardo, já que para outras pessoas as distâncias entre os petshops seriam diferentes, podendo levar a outros resultados.
 
-# Decisões de Projeto
+### Decisões de Projeto
 
 1. **Front End:**
    - Foram utilizados html, css e js já que foi liberado utilizar a tecnologia que eu me sentisse mais a vontade, e essas foram as tecnologias que eu mais utilizei quando necessário projetar um Front End.
@@ -46,7 +46,7 @@
 4. **Comunicação entre Front end e Back end:**
    - Integração entre o frontend e backend é feita via AJAX usando jQuery.
 
-# Outras Informações
+### Outras Informações
 
 - **Arquivos:**
   - `main.py`: Backend Flask.
