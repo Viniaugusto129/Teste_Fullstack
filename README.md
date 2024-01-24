@@ -1,6 +1,6 @@
 # README.md
 
-# Encãotrador
+## Encãotrador
 
 # Instruções para Executar o Sistema
 
