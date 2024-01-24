@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encãotrador</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/908910519c.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font-family: 'Lobster', cursive;
+      background: linear-gradient(to right, #74cb90, #4d7d4c);
+      overflow: auto;
+    }
+
+    h1 {
+      color: #CCCCCC;
+    }
+
+    #sidebar {
+      display: none;
+    }
+
+    @media (min-width: 900px) {
+      #sidebar {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        background-color: #1a202c;
+        font-family: 'Poppins', sans-serif;
+        color: white;
+        padding: 1rem;
+        font-size: 1em;
+      }
+
+      #sidebar ul li {
+        margin-bottom: 8px;
+        text-decoration: underline;
+      }
+
+      #resul {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px; 
+        margin: 0 auto;
+        max-width: 800px;
+      }
+
+      #ret {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-r from-sky-500 to-indigo-500">
+  <div id="inputs" class="container-fluid">
+    <h1 class="text-4xl lg:text-4xl portrait:text-5xl text-white mt-4 mx-8 font-bold">Bem-vindo a
+      Encãotrador!
+      <br>
+      Aqui você vai encontrar o Petshop perfeito próximo <br>
+      a você para cuidar do seu melhor amigo canino.
+    </h1>
+    <div class="row">
+      <div class="col-lg-2">
+        <h2 class="text-2xl lg:text-2xl portrait:text-5xl text-gray-100 mb-12 font-bold">Coloque o dia que quer reservar
+          o banho:</h2>
+        <label for="data" class="text-2xl lg:text-xl portrait:text-5xl mr-2 text-gray-100 mb-4"><i
+            class="fa-regular fa-calendar mr-2"></i>Data:</label>
+        <input type="date" name="data" id="data"
+          class="form-control text-2xl lg:text-xl portrait:text-5xl text-gray-800 border-2 rounded-xl p-2">
+
+        <div id="seg-part" class="mt-4">
+          <h2
+            class="text-2xl lg:text-2xl portrait:text-5xl text-gray-100 mt-20 portrait:mb-20 landscape:mb-4 font-bold">
+            Também a quantidade de cães:</h2>
+          <label for="cpequenos" class="text-2xl lg:text-xl portrait:text-5xl text-gray-100 mb-10"><i
+              class="fa-solid fa-dog mr-2"></i>Cachorros Pequenos:</label>
+          <input type="number" name="cpequenos" id="cpequenos"
+            class="form-control text-2xl lg:ml-2 px-4 lg:text-xl portrait:text-5xl mb-4 text-gray-700 border-2 rounded-xl mt-10 w-6/12">
+          <br>
+          <label for="cgrandes" class="text-2xl lg:text-xl portrait:text-5xl text-gray-100 mb-10"><i
+              class="fa-solid fa-dog mr-2 fa-xl"></i>Cachorros Grandes:</label>
+          <input type="number" name="cgrandes" id="cgrandes"
+            class="form-control text-2xl lg:ml-2 px-4 lg:text-xl portrait:text-5xl portrait:mb-20 landscape:mb-4 lg:mb-4 text-gray-700 border-2 rounded-xl mt-10 w-6/12">
+          <br>
+          <button id="btn"
+            class="btn btn-primary text-xl lg:text-md portrait:text-5xl px-6 py-2 portrait:px-10 portrait:py-6 bg-gray-400 duration-200 rounded-xl mt-16"><i
+              class="fa-solid fa-paw mr-2"></i>Encontrar!</button>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <img src="{{url_for('static', filename='dog.png')}}" alt="" class="w-100 h-auto">
+      </div>
+    </div>
+  </div>
+
+  <div id="outputs" style="display: none;" class="mt-10 mx-20">
+    <h1 class="text-center text-2xl lg:text-2xl portrait:text-5xl text-gray-100 mb-24 font-bold">Encontramos o Petshop
+      Perfeito para você!
+    </h1>
+    <div id="resul" class="flex flex-wrap flex-col h-screen">
+      <div class="p-6 bg-gray-100 shadow-xl rounded-xl ml-0 mr-auto w-full">
+        <div class="flex flex-row gap-1 mb-5 text-center lg:text-left">
+          <p class="text-3xl lg:text-xl">Nome:
+          <p id="petshop-nome" class="text-3xl lg:text-xl"></p>
+          </p>
+        </div>
+        <div class="flex flex-row gap-1 mb-5 text-center lg:text-left">
+          <p class="text-3xl lg:text-xl">Valor:
+          <p id="petshop-valor" class="text-3xl lg:text-xl"></p>
+          </p>
+        </div>
+        <div class="flex flex-row gap-1 mb-5 text-center lg:text-left">
+          <p class="text-3xl lg:text-xl">Distância:
+          <p id="petshop-dist" class="text-3xl lg:text-xl"></p>
+          </p>
+        </div>
+        <div class="flex flex-row gap-1 mb-5 text-center lg:text-left">
+          <p class="text-3xl lg:text-xl">Data:
+          <p id="petshop-dia" class="text-3xl lg:text-xl"></p>
+          </p>
+        </div>
+        <div class="flex flex row gap-10">
+          <button id="ret"
+            class="btn btn-info w-6/12 border-2 text-3xl lg:text-xl px-6 py-2 hover:bg-info duration-200 rounded-xl mt-10"><i
+              class="fa-solid fa-paw mr-2"></i>Nova pesquisa</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="sidebar" class="fixed top-0 right-0 h-screen bg-gray-800 text-white p-4">
+    <p class="text-2xl font-bold mb-4">Conheça os petshops próximos de você:</p>
+    <ul>
+      <li>Meu Canino Feliz</li>
+      <li>Vai Rex</li>
+      <li>ChowChawgas</li>
+    </ul>
+  </div>
+
+  <script src="{{url_for('static', filename='script.js')}}"></script>
+</body>
+
+</html>
